@@ -11,7 +11,7 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		Next: nil,
 	}
 	dummy.Next = head
-
+	// 需要更早一个节点，使用dummy node
 	node := findFromEnd(dummy, n+1)
 	node.Next = node.Next.Next
 	return dummy.Next
