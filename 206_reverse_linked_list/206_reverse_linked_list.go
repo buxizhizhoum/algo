@@ -1,5 +1,6 @@
 package reverse_linked_list
 
+import "fmt"
 
 type ListNode struct {
     Val int
@@ -32,4 +33,51 @@ func _reverseN(head *ListNode, n int) (*ListNode, *ListNode) {
 	head.Next.Next = head
 	head.Next = successor
 	return reversed, successor
+}
+
+
+func reverseList2(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+
+	if head.Next == nil {
+		return head
+	}
+	var dummy *ListNode
+	dummy = nil
+	left := dummy
+	cur := head
+	right := head.Next
+	for ; cur.Next != nil; {
+		cur.Next = left
+		left = cur
+
+		cur = right
+		right = right.Next
+
+	}
+	cur.Next = left
+	return cur
+}
+
+func main() {
+	head := &ListNode{
+		Val:  1,
+		Next: &ListNode{
+			Val:  2,
+			Next: &ListNode{
+				Val:  3,
+				Next: &ListNode{
+					Val:  4,
+					Next: &ListNode{
+						Val:  5,
+						Next: nil,
+					},
+				},
+			},
+		},
+	}
+	res := reverseList(head)
+	fmt.Println(res)
 }
