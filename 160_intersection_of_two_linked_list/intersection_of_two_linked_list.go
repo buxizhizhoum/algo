@@ -26,3 +26,34 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	}
 	return p1
 }
+
+
+func getIntersectionNode2(headA, headB *ListNode) *ListNode {
+	lenA := 0
+	lenB := 0
+
+	for p1:= headA;p1 != nil; p1 = p1.Next {
+		lenA += 1
+	}
+	for p2:= headB;p2 != nil; p2 = p2.Next {
+		lenB += 1
+	}
+	// 哪个长，先把长的部分走完
+	p1 := headA
+	p2 := headB
+	if lenA > lenB {
+		for i := 0; i < lenA - lenB; i++ {
+			p1 = p1.Next
+		}
+	} else {
+		for i := 0; i < lenB - lenA; i++ {
+			p2 = p2.Next
+		}
+	}
+
+	for ;p1 != p2; {
+		p1 = p1.Next
+		p2 = p2.Next
+	}
+	return p1
+}
