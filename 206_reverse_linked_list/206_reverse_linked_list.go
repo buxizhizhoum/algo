@@ -61,6 +61,26 @@ func reverseList2(head *ListNode) *ListNode {
 	return cur
 }
 
+
+func reverseList3(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	var dummy *ListNode
+	dummy = nil
+	left := dummy
+	cur := head
+	for ; cur != nil; {
+		right := cur.Next
+		// 换向
+		cur.Next = left
+		// 窗口前移
+		left = cur
+		cur = right
+	}
+	return left
+}
+
 func main() {
 	head := &ListNode{
 		Val:  1,
