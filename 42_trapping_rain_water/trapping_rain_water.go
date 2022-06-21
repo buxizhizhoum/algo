@@ -65,7 +65,7 @@ func min(a, b int) int {
 }
 
 
-func trap(height []int) int {
+func trap1(height []int) int {
 	if len(height) < 2 {
 		return 0
 	}
