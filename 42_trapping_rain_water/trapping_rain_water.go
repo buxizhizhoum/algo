@@ -65,3 +65,37 @@ func min(a, b int) int {
 }
 
 
+func trap(height []int) int {
+	if len(height) < 2 {
+		return 0
+	}
+	left := 0
+	right := len(height) - 1
+	maxLeft := height[0]
+	maxRight := height[len(height) - 1]
+	sum := 0
+	for ; left <= right; {
+		maxLeft = max(maxLeft, height[left])
+		maxRight = max(maxRight, height[right])
+
+		tmp := 0
+		// 两侧低点出现在左侧，右侧不需要考虑了，直接根据左侧低点计算容量
+		if maxLeft < maxRight {
+			tmp = maxLeft - height[left]
+			left++
+		} else {
+			tmp = maxRight - height[right]
+			right--
+		}
+		sum += tmp
+	}
+	return sum
+}
+
+
+func main() {
+	//height := []int{0,1,0,2,1,0,1,3,2,1,2,1}
+	height := []int{0,1,0,2,1,0,1,3,2,1,2,1}
+	res := trap1(height)
+	fmt.Println(res)
+}
