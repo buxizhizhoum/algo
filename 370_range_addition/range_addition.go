@@ -50,11 +50,17 @@ func getModifiedArray(length int, updates [][]int) []int {
 }
 
 func main() {
-	testUpdates := [][]int{
-		{1,3,2},
-		{2,4,3},
-		{0,2,-2},
+	//testUpdates := [][]int{
+	//	{1,3,2},
+	//	{2,4,3},
+	//	{0,2,-2},
+	//}
+	testUpdates :=[][]int{
+		{1,2,10},
+		{2,3,20},
+		{2,5,25},
 	}
+	//[[1,2,10],[2,3,20],[2,5,25]] 5 测试结果:[0,10,55,45,25] 期望结果:[10,55,45,25,25] stdout
 	tmp := getModifiedArray(5, testUpdates)
 	fmt.Println(tmp)
 
