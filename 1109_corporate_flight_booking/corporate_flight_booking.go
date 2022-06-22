@@ -33,6 +33,7 @@ func (this *Difference) Result() []int {
 }
 
 func corpFlightBookings(bookings [][]int, n int) []int {
+	// 1到n编号，还是用一个长度为n的数组表示，索引和编号错1个
 	nums := make([]int, n)
 	diffArr := Constructor(nums)
 	for _, item := range bookings {
