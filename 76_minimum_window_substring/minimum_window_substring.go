@@ -19,11 +19,12 @@ func minWindow(s string, t string) string {
 
 	// 长度，区间，存长度为了后续判断方便
 	ans := []int{math.MaxInt32, 0, 0}
-
+	// 发现某个字符在 window 的数量满足了 need 的需要，就要更新 valid，表示有一个字符已经满足要求
 	for right < len(s){
 		window[s[right]]++// 支持吗？
 		// 当右边指针指向的字符属于需要的字符，且在上面扩展右边界后，窗口内字符数和需要的字符数相等
 		// 有效长度加1
+		// valid表示有几个字符已经满足需求
 		if need[s[right]] > 0 && window[s[right]] == need[s[right]] {
 			valid++
 		}
