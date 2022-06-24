@@ -14,18 +14,20 @@ func minWindow(s string, t string) string {
 
 	left := 0
 	right := 0
+	// 唯一字符个数
 	valid := 0
 
 	// 长度，区间，存长度为了后续判断方便
 	ans := []int{math.MaxInt32, 0, 0}
 
 	for right < len(s){
-		window[s[right]] += 1 // 支持吗？
-
+		window[s[right]]++// 支持吗？
+		// 当右边指针指向的字符属于需要的字符，且在上面扩展右边界后，窗口内字符数和需要的字符数相等
+		// 有效长度加1
 		if need[s[right]] > 0 && window[s[right]] == need[s[right]] {
 			valid++
 		}
-
+		// valid == len(need) 表示window中包含了可以组成字符串t的字符，即已经找到了一个可行的解
 		for left <= right && valid == len(need) {
 			// 更新结果
 			// right - left + 1 is the length of the string
@@ -33,7 +35,7 @@ func minWindow(s string, t string) string {
 				ans = []int{right - left + 1, left, right + 1}
 			}
 
-			window[s[left]] -= 1
+			window[s[left]]--
 			if need[s[left]] > 0 && window[s[left]] < need[s[left]] {
 				valid--
 			}
