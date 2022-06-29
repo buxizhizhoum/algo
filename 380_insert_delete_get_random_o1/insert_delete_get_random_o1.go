@@ -5,65 +5,6 @@ import (
 	"time"
 )
 
-//import (
-//	"fmt"
-//	"math/rand"
-//	"time"
-//)
-//
-//type RandomizedSet struct {
-//	Val2Index map[int]int
-//	Nums []int
-//}
-//
-//
-//func Constructor() RandomizedSet {
-//	return RandomizedSet{
-//		Val2Index: make(map[int]int, 0),
-//		Nums: make([]int, 0),
-//	}
-//}
-//
-//
-//func (this *RandomizedSet) Insert(val int) bool {
-//	_, ok := this.Val2Index[val]
-//	if ok {
-//		return false
-//	} else {
-//		this.Nums = append(this.Nums, val)
-//		// 维护map记录
-//		this.Val2Index[val] = len(this.Nums) - 1
-//		return true
-//	}
-//}
-//
-//
-//func (this *RandomizedSet) Remove(val int) bool {
-//	index, ok := this.Val2Index[val]
-//	if !ok {
-//		return false
-//	} else {
-//		// 交换，删除最后一个元素
-//		this.Nums[index], this.Nums[len(this.Nums) - 1] = this.Nums[len(this.Nums) - 1], this.Nums[index]
-//		this.Nums = this.Nums[0:len(this.Nums) - 1]
-//		// 删除map记录
-//		delete(this.Val2Index, val)
-//		return true
-//	}
-//}
-//
-//
-//func (this *RandomizedSet) GetRandom() int {
-//	index := randInt(0, len(this.Nums) - 1)
-//	return this.Nums[index]
-//}
-//
-//
-//func randInt(min, max int) int {
-//	rand.Seed(time.Now().UnixNano())
-//	return min + rand.Intn(max - min + 1)
-//}
-
 import (
 	"math/rand"
 )
@@ -88,6 +29,7 @@ func (this *RandomizedSet) Insert(val int) bool {
 		return false
 	} else {
 		this.Nums = append(this.Nums, val)
+		// 维护map记录
 		this.Val2Index[val] = len(this.Nums) - 1
 		return true
 	}
@@ -104,6 +46,7 @@ func (this *RandomizedSet) Remove(val int) bool {
 		// 交换，删除最后一个元素
 		this.Nums[index], this.Nums[len(this.Nums) - 1] = this.Nums[len(this.Nums) - 1], this.Nums[index]
 		this.Nums = this.Nums[0:len(this.Nums) - 1]
+		// 维护map记录，这一句和上面把nums里面最后一个元素的索引改成index一起，完成了交换时期的索引维护工作
 		delete(this.Val2Index, val)
 		return true
 	}
