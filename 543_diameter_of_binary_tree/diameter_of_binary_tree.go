@@ -27,7 +27,7 @@ func diameter(root *TreeNode, res *int) int {
 	nodeDiameter := leftDepth + rightDepth
 	// 取最大的diameter
 	*res = max(*res, nodeDiameter)
-	// 返回节点最大深度
+	// 返回节点最大深度，后续算直径
 	return 1 + max(leftDepth, rightDepth)
 }
 
