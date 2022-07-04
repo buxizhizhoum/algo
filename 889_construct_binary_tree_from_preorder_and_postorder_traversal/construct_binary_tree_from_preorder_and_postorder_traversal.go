@@ -45,3 +45,10 @@ func build(preOrder []int, preOrderStart, preOrderEnd int,
 		Right: right,
 	}
 }
+
+
+func main() {
+	testInorder := []int{1,2,4,5,3,6,7}
+	testPostOrder := []int{4,5,2,6,7,3,1}
+	constructFromPrePost(testInorder, testPostOrder)
+}
