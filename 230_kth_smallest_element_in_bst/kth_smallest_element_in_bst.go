@@ -22,7 +22,7 @@ func traverse(root *TreeNode, k int, res *int, rank *int) {
 	}
 
 	traverse(root.Left, k, res, rank)
-	(*rank)++
+	*rank++
 	fmt.Printf("rank: %d", *rank)
 	if *rank == k {
 		*res = root.Val
