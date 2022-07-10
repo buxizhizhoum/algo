@@ -20,7 +20,7 @@ func generate(left, right int) []*TreeNode {
 		res = append(res, nil)
 		return res
 	}
-
+	// i是root节点，左右在这里分开，用到了bst的特性
 	for i:= left; i<=right;i++ {
 		leftSolutions := generate(left, i-1)
 		rightSolutions := generate(i+1, right)
