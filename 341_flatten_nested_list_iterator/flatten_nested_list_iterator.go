@@ -46,6 +46,7 @@ func (this *NestedIterator) Next() int {
 }
 
 func (this *NestedIterator) HasNext() bool {
+	// 如果最后一个元素不是整数，弹出来，继续展开最后一个元素，直到展开为整数
 	for ;len(*this.Stack) > 0 && !(*this.Stack)[len(*this.Stack) - 1].IsInteger(); {
 		cur := (*this.Stack)[len(*this.Stack) - 1]
 		*this.Stack = (*this.Stack)[:len(*this.Stack) - 1]
