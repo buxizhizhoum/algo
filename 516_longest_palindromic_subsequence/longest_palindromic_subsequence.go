@@ -11,15 +11,15 @@ func longestPalindromeSubseq(s string) int {
 		dp[i][i] = 1
 	}
 	//dp[i][j] = max(max(dp[i+1][j], dp[i][j-1]), dp[i-1][j-1])
-	// 决定了从下往上，从左往右遍历
-	for i := n - 1; i >=0 ;i-- {
+	// 决定了从下往上，从左往右遍历, 最后一行对角线上方，已经算好了，从倒数第二行开始
+	for i := n - 2; i >=0 ;i-- {
 		for j := i+1; j < n; j++ {
 			if s[i] == s[j] {
 				// 如果两个字符串相等，则是[i+1, j-1]之间最长回文字符串长度+2
 				dp[i][j] = dp[i+1][j-1] + 2
 			} else {
 				// todo: dp[i][j] = max(max(dp[i+1][j], dp[i][j-1]), dp[i-1][j-1])
-				//fmt.Println(dp[i-1][j-1])
+				//dp[i+1][j-1]一定是比dp[i][j-1], dp[i+1][j]要小的
 				dp[i][j] = max(dp[i+1][j], dp[i][j-1])
 			}
 		}
