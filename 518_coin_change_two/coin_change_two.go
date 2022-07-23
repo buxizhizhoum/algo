@@ -21,7 +21,7 @@ func change(amount int, coins []int) int {
 			} else {
 				//dp[i-1][j]表示在不取第i个的时候的组合数
 				//dp[i][j-coins[i-1]]表示在取i个的时候，那么就应该关注如何凑出金额 j - coins[i-1]
-				// todo: 这里第一个索引是i，和01背包以及分割子集和里面的不一样
+				// todo: 这里第一个索引是i，和01背包以及分割子集和里面的不一样，这里是完全背包
 				dp[i][j] = dp[i-1][j] + dp[i][j - coins[i-1]]
 			}
 		}
