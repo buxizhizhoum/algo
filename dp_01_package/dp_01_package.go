@@ -23,8 +23,10 @@ func maximumValue(weight []int, value []int, w int, n int) int {
 	}
 
 	for i:= 1; i< n+1; i++ {
+		// j表示容量
 		for j:= 1; j< w+1;j++ {
 			// 注意这里因为加了一行没物品的初始化条件，dp数组的i索引和weight数组差1
+			// 如果当前物品装不下
 			if j-weight[i-1] < 0 {
 				dp[i][j] = dp[i-1][j]
 			} else {
