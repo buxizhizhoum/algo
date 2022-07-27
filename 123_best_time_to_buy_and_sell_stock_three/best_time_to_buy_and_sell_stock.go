@@ -18,7 +18,9 @@ func maxProfitGeneral(prices []int, k int) int {
 	//dp0[0][j] = 0
 	//dp0[i][0] = 0
 	//dp1[0][j] = -prices[i]
-	// todo: 为什么是这两个的max
+	// todo: 为什么是这两个的max,
+	// 已经交易了0次且持有股票，要么是前一天保持过来，要么一直没有买，买今天的，看哪个便宜买哪个，
+	// 这里必然是负数，因为限制了是第一次买入，所以max取花钱最少的那个
 	//dp1[i][0] = max(dp[i-1][0], -prices[i])
 	for j:= 0;j<k+1;j++{
 		dp0[0][j] = 0
