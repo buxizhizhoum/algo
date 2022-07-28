@@ -17,6 +17,7 @@ func maxProfit(prices []int) int {
 		// 对于第2种情况，因为dp[i-1]代表在第i-1天卖出时的最大获益，
 		// 如果在第i-1天不卖而是在第i天卖就是这种情况下的最大获益
 		dp[i] = max(0, dp[i-1] - prices[i-1] + prices[i])
+		// 下面这样不行
 		//dp[i] = max(0, max(dp[i-1], dp[i-1] - prices[i-1] + prices[i]))
 		// 可以交易无限次
 		//dp[i] = dp[i-1] + max(0, prices[i] - prices[i-1])
