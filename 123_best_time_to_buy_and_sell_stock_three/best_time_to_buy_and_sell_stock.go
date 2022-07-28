@@ -22,13 +22,17 @@ func maxProfitGeneral(prices []int, k int) int {
 	// 已经交易了0次且持有股票，要么是前一天保持过来，要么一直没有买，买今天的，看哪个便宜买哪个，
 	// 这里必然是负数，因为限制了是第一次买入，所以max取花钱最少的那个
 	//dp1[i][0] = max(dp[i-1][0], -prices[i])
-	for j:= 0;j<k+1;j++{
+	dp0[0][0] = 0
+	// 持有股票，交易次数为0，实际上不存在这种情况，给负无穷
+	dp1[0][0] = ^int(^uint(0)>>1)
+	for i:=0;i<len(prices);i++{
+		dp0[i][0] = 0
+		//dp1[i][0] = max(dp1[i-1][0], -prices[i])
+		dp1[i][0] = ^int(^uint(0)>>1)
+	}
+	for j:= 1;j<k+1;j++{
 		dp0[0][j] = 0
 		dp1[0][j] = -prices[0]
-	}
-	for i:=1;i<len(prices);i++{
-		dp0[i][0] = 0
-		dp1[i][0] = max(dp1[i-1][0], -prices[i])
 	}
 	//fmt.Println(dp0)
 	//fmt.Println(dp1)
@@ -56,6 +60,9 @@ func max(a, b int) int {
 
 func main() {
 	//maxProfit([]int{3,3,5,0,0,3,1,4})
-	res := maxProfit([]int{1,2,3,4,5})
+	//[3,3,5,0,0,3,1,4] 测试结果:4 期望结果:6 stdout:
+	// res := maxProfit([]int{1,2,3,4,5})
+	res := maxProfit([]int{3,3,5,0,0,3,1,4})
+
 	fmt.Println(res)
 }
