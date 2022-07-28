@@ -6,6 +6,7 @@ func maxProfit(prices []int) int {
 	// 持有，第i天收益
 	dp1 := make([]int, len(prices))
 	dp0[0] = 0
+	// 持有股票，第0天收益
 	dp1[0] = -prices[0]
 	for i:= 1;i<len(prices);i++ {
 		// 保持不动 or 卖出
