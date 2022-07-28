@@ -19,6 +19,7 @@ func maxProfit(prices []int, fee int) int {
 	for i:= 1;i<n;i++ {
 		// 保持 or 卖出
 		// todo: 为什么不是max(dp0[i-1], dp1[i-1] + prices[i]-prices[i-1])
+		// ans: dp1已经表示有股票了，只需要卖出获利即可，减去昨天，买入今天是在dp是一维数组，表示第i天卖出收益的时候需要进行的操作
 		dp0[i] = max(dp0[i-1], dp1[i-1] + prices[i])
 		// 保持 or 买入
 		// todo: 为什么不是max(dp1[i-1], dp0[i-1] - prices[i] + prices[i-1]- fee)
