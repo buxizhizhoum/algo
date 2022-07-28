@@ -14,8 +14,11 @@ func maxProfit(prices []int) int {
 	}
 	//dp0[0][i] = 0
 	//dp0[i][0] = 0
+	// 第0天，交易1次
 	dp1[0][1] = -prices[0]
-	dp1[1][1] = max(0, dp1[0][0] - prices[1] + prices[0])
+	// 第一天，交易1次，要么在第0天买卖，收益0，要么第0天买，第1天买
+	dp1[1][1] = max(0, dp1[0][0] - prices[0] + prices[1] )
+	//dp1[1][1] = max(0, prices[1] - prices[0])
 	for i:= 1;i<len(prices);i++ {
 		for j:=1;j<2;j++ {
 			dp0[i][j] = max(dp0[i-1][j], dp1[i-1][j] + prices[i])
