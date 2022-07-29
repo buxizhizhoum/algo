@@ -33,8 +33,7 @@ func backtrack(board [][]string, n, row int, res *[][]string) {
 	}
 
 	// 方阵，所以列的数量可以直接用len(board)
-	colNums := len(board)
-	for j:=0;j<colNums;j++{
+	for j:=0;j<n;j++{
 		if !isValid(board, n, row, j) {
 			continue
 		}
