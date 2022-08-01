@@ -8,7 +8,7 @@ func subsets(nums []int) [][]int {
 	return res
 }
 
-// 想想成对子集树的前序遍历，在开始的时候，就把结果添加到最终结果中
+// 想象成对子集树的前序遍历，在开始的时候，就把结果添加到最终结果中
 func backtrack(nums []int, start int, track []int, res *[][]int) {
 	// 这里不能直接放track，track在后续会发生变化
 	tmp := make([]int, len(track))
