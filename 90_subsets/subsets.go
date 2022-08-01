@@ -1,7 +1,7 @@
 package subsets
 
 import "sort"
-
+// 元素有重复，同样个数的子集里面，重复元素不应当当做两个元素
 func subsetsWithDup(nums []int) [][]int {
 	res := make([][]int, 0)
 	track := make([]int, 0)
