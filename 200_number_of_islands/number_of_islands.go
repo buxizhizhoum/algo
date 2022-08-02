@@ -29,7 +29,7 @@ func dfs(grid [][]byte, directions [][]int, i, j int, m, n int) {
 	if grid[i][j] == '0' {
 		return
 	}
-	// 先把岛淹了
+	// 先把岛淹了，flood fill
 	grid[i][j] = '0'
 	for _, dir := range directions {
 		dfs(grid, directions, i+dir[0], j+dir[1], m, n)
