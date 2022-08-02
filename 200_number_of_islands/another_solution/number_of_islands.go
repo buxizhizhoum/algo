@@ -18,8 +18,10 @@ func numIslands(grid [][]byte) int {
 	}
 	for i:= 0;i<m;i++ {
 		for j:=0;j<n;j++ {
+			// 找到没有访问过的陆地
 			if grid[i][j] == '1' && visited[i][j] != 1 {
 				res += 1
+				// 访问这块陆地及其相邻的陆地
 				dfs(grid, directions, visited, i, j, m, n)
 			}
 		}
