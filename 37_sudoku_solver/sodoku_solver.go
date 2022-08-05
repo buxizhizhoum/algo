@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 建议看另一个，这个不是很好理解
 func solveSudoku(board [][]byte)  {
 	m := len(board)
 	n := len(board[0])
