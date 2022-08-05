@@ -12,17 +12,13 @@ func backtrack(board [][]byte, rowStart, colStart int, m, n int) bool {
 	if rowStart == m - 1 && colStart == n - 1 {
 		return true
 	}
-	// 处理换行，也可以不传行列，直接判断board，不满足continue, 会慢一点
-	if colStart >=n {
-		rowStart += 1
-		colStart = 0
-	}
 	for i:=rowStart;i<m;i++ {
 		for j:= colStart;j<n;j++ {
 			if board[i][j] != '.' {
 				continue
 			}
-			//fmt.Println("start i, j", i, j)
+			printBoard(board)
+			fmt.Println("start i, j", i, j)
 			for number:=byte('1');number<=byte('9');number++ {
 				flag := isValid(board, i, j, m, n, number)
 				if !flag {
@@ -30,13 +26,17 @@ func backtrack(board [][]byte, rowStart, colStart int, m, n int) bool {
 				}
 				board[i][j] = number
 				//fmt.Println("i, j ", i, j)
-				// todo: 这里传i，j为什么不行？
 				res := backtrack(board, 0, 0, m, n)
+				// todo: 这里传i，j为什么不行？
+				// 处理换行，也可以不传行列
+				//newi, newj := calculateNextCoordinate(i, j+1, m, n)
+				//res := backtrack(board, newi, newj, m, n)
 				if res {
 					return true
 				}
 				board[i][j] = '.'
 			}
+			// 所有的数都试过了，此路不通，回去，但是这里的两重for循环不好回，所以上面backtrack每次都是从0开始
 			return false
 		}
 	}
@@ -67,6 +67,14 @@ func isValid(board [][]byte, row, col int, m, n int, number byte) bool {
 		}
 	}
 	return true
+}
+
+func calculateNextCoordinate(i, j, m, n int) (int, int) {
+	if j > n - 1 {
+		i += 1
+		j = 0
+	}
+	return i, j
 }
 
 func printBoard(board [][]byte) {
