@@ -17,7 +17,6 @@ func printf(ch chan int) {
 }
 
 func main() {
-
 	ch := make(chan int, 1)
 	ch <- 0
 	wg.Add(2)
