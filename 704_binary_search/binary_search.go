@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 func search(nums []int, target int) int {
+	// 如果用小于，区间最好是初始化为[0, len(nums)], 这样跳出循环后left = right = len(nums)
+	// 已经搜索完了所有的数据
 	left, right := 0, len(nums)
 	for ;left < right; {
 		mid := left + (right - left) / 2
@@ -13,14 +15,6 @@ func search(nums []int, target int) int {
 		} else if nums[mid] > target {
 			right = mid
 		}
-	}
-	// 一直找到了最右边的情况
-	if left == len(nums) {
-		return -1
-	}
-	// left < right区间[left, right)，区间最后nums[left]还没有判断
-	if nums[left] == target {
-		return left
 	}
 	return -1
 }
