@@ -11,13 +11,10 @@ func totalFruit(fruits []int) int {
 		bucket[fruits[right]]++
 		// 更新窗口内结果
 		if len(bucket) <= 2 {
-			//fmt.Println(right, left)
 			res = max(res, right - left + 1)
 		}
 		// 遇到超过的情况，抢救一下
 		for ;len(bucket) > 2; {
-			//fmt.Println("    ", right, left)
-			//fmt.Println(bucket)
 			leftItem := fruits[left]
 			val, _ := bucket[leftItem]
 			// 如果多于1个，减少数量，如果只有1个，直接移出
