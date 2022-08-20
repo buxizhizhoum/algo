@@ -15,19 +15,14 @@ func minSubArrayLen(target int, nums []int) int {
 		window = right - left + 1
 		if sum >= target {
 			res = min(res, window)
-		} else {
-			continue
 		}
-
-		for ;left < right; {
+		// 只有满足条件才进入这个循环
+		for ;sum >= target; {
 			sum -= nums[left]
 			left++
 			window = right - left + 1
-
 			if sum >= target {
 				res = min(res, window)
-			} else {
-				break
 			}
 		}
 	}
