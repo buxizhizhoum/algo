@@ -1,5 +1,6 @@
 package find_all_anagrams_in_a_string
 
+// 这里并不好理解，看二刷时候的方案，复杂度高一点，但是好理解
 func findAnagrams(s string, p string) []int {
 	res := make([]int, 0)
 	need := make(map[byte]int, 0)
