@@ -3,8 +3,7 @@ package main
 import "fmt"
 
 // 我想：需要的是什么？窗口里面的再做一个map，两个呈现包含关系的时候，收缩左侧边界，时间复杂度会乘以p的长度
-// 有一个diff，开始的时候是需要的map的相反map，随着窗口变动，当这个map是空的时候，找到一个答案，diff包含其它字符的时候怎么判断？
-// 题解：随着窗口滑动的时候，维护一个valid计数，表示窗口中的字符有几个是满足条件的（字符本身和出现的次数都满足），当满足的时候，找到一个答案
+// 这样复杂度高一点，但是好理解
 func findAnagrams(s string, p string) []int {
 	need := make(map[byte]int, 0)
 	window := make(map[byte]int, 0)
