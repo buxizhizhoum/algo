@@ -11,7 +11,8 @@ func main() {
 	nums := []int{1,2,3}
 	nums = append(nums, 4)
 	res := foo(nums)
-	nums = nums[1:]
+	nums = nums[:len(nums) - 1]
+	nums = append(nums, 5)
 	fmt.Println(res)
 }
 
