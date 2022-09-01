@@ -22,6 +22,7 @@ func backtrack(candidates []int, target int, start int, track []int, res *[][]in
 		track = append(track, candidates[i])
 		// 注意这里start传入i很关键，当处理到第i个元素的时候，
 		// i不需要再考虑之前的情形，因为同样的组合已经在i之前的元素中包含了
+		// 这里就相当于不在这里进行剪枝
 		backtrack(candidates, target - candidates[i], i, track, res)
 		track = track[:len(track) - 1]
 	}
