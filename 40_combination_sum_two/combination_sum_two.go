@@ -25,6 +25,7 @@ func backtrack(candidates []int, track []int, target int, startIndex int, res *[
 
 	for i:= startIndex; i < len(candidates); i++ {
 		// 树层去重，重复的元素不再选取
+		// 这里去重i 是 > startIndex, 如果i 只限制 >0, 会过度去重，上一层的也会被考虑进来
 		if i > startIndex && candidates[i] == candidates[i-1] {
 			continue
 		}
