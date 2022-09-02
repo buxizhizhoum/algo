@@ -23,7 +23,7 @@ func backtrack(s string, track []string, res *[][]string, startIndex int) {
 		}
 		// 回文字符串，需要startIndex，到 i之间的字符串
 		track = append(track, s[startIndex: i+1])
-		fmt.Println(track)
+		// 找到一个切割方式以后，继续对后面的字符串进行切割
 		backtrack(s, track, res, i + 1)
 		track = track[:len(track) - 1]
 	}
