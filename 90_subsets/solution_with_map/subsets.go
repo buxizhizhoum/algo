@@ -5,6 +5,7 @@ import "sort"
 func subsetsWithDup(nums []int) [][]int {
 	res := make([][]int, 0)
 	track := make([]int, 0)
+	// 这里和491寻找所有上升自序列不同之处在于需要排序
 	sort.Slice(nums, func(i, j int) bool {
 		return nums[i] < nums[j]
 	})
