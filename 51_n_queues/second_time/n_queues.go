@@ -54,6 +54,7 @@ func isValid(grid [][]string, row, col int, n int) bool {
 			return false
 		}
 	}
+	// 判断斜线时，不一定是对角线，而是和对角线平行的线
 	// 左上到右下斜对角平行的线，只需要判断上面的部分就够了，下面还没放
 	for i, j := row, col;i >= 0 && j >= 0 ; i, j = i-1, j-1 {
 		//fmt.Println(i, j)
