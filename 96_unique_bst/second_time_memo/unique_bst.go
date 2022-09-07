@@ -2,6 +2,7 @@ package second_time_memo
 
 import "fmt"
 
+// https://mp.weixin.qq.com/s/kcwz2lyRxxOsC3n11qdVSw
 func numTrees(n int) int {
 	memo := make(map[string]int, 0)
 	res := count(1, n, memo)
