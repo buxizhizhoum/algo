@@ -1,8 +1,8 @@
 package target_sum
 
 // https://leetcode.cn/problems/target-sum/solution/mu-biao-he-by-leetcode-solution-o0cp/
-// x 是添加负号组成的负数
-// (sum - x) - x = S => x = (S - sum) / 2
+// x 是添加负号组成的数的和
+// (sum - x) - x = target => x = (sum - target) / 2
 func findTargetSumWays(nums []int, target int) int {
 	total := sum(nums)
 	diff := total - target
