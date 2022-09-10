@@ -1,4 +1,6 @@
-package coin_change_two
+package main
+
+import "fmt"
 
 func change(amount int, coins []int) int {
 	n := len(coins)
@@ -26,6 +28,11 @@ func change(amount int, coins []int) int {
 			}
 		}
 	}
+	fmt.Println(dp)
 	return dp[n][amount]
+}
 
+
+func main() {
+	change(5, []int{1,2,5})
 }
