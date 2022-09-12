@@ -1,8 +1,7 @@
 package third_time
 
 func longestCommonSubsequence(text1 string, text2 string) int {
-	// 这里在第一行和第一列放了一个空字符，并认为dp[0][..] = 0, dp[..][0] = 0,
-	// 这样在后面初始化和for循环的时候写代码容易一些
+	// dp[i][j]：长度为[0, i - 1]的字符串text1与长度为[0, j - 1]的字符串text2的lcs为dp[i][j]
 	dp := make([][]int, len(text1) + 1)
 	for i:=0;i<len(dp);i++ {
 		dp[i] = make([]int, len(text2) + 1)

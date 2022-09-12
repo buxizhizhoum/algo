@@ -1,14 +1,13 @@
 package second_time
 
 func findLength(nums1 []int, nums2 []int) int {
+	// dp[i][j]：长度为[0, i - 1]的字符串text1与长度为[0, j - 1]的字符串text2的最长公共子序列为dp[i][j]
 	dp := make([][]int, len(nums1) + 1)
 	for i:= 0;i<len(dp);i++ {
 		dp[i] = make([]int, len(nums2) + 1)
 	}
 	// dp[0][..] = 0
 	// dp[..][0] = 0
-
-
 	for i := 1;i<len(nums1) + 1;i++{
 		for j:=1;j<len(nums2) + 1;j++{
 			if nums1[i-1] == nums2[j-1] {
