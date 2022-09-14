@@ -18,7 +18,7 @@ func longestPalindromeSubseq(s string) int {
 				// 如果两个字符串相等，则是[i+1, j-1]之间最长回文字符串长度+2
 				dp[i][j] = dp[i+1][j-1] + 2
 			} else {
-				// todo: dp[i][j] = max(max(dp[i+1][j], dp[i][j-1]), dp[i-1][j-1])
+				// todo: dp[i][j] = max(max(dp[i+1][j], dp[i][j-1]), dp[i+1][j-1])
 				//dp[i+1][j-1]一定是比dp[i][j-1], dp[i+1][j]要小的
 				dp[i][j] = max(dp[i+1][j], dp[i][j-1])
 			}
