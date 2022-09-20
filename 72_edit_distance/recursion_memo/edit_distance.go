@@ -27,11 +27,11 @@ func recursion(word1 string, i int, word2 string, j int, memo map[string]int) in
 		memo[key] = res
 		return res
 	} else {
-		delete := recursion(word1, i-1, word2, j, memo)
+		del := recursion(word1, i-1, word2, j, memo)
 		insert := recursion(word1, i, word2, j-1, memo)
 		replace := recursion(word1, i-1, word2, j-1, memo)
 		// 需要加1
-		res = min(min(delete, insert), replace) + 1
+		res = min(min(del, insert), replace) + 1
 		memo[key] = res
 		return res
 	}
